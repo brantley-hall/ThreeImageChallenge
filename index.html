@@ -3115,15 +3115,15 @@ function getUnifiedBuildingCoordinates(){
     h: 0.001, col: 'rgba(216,213,208,0.01)', name: 'ZZZ'
   };
   
-  // RH1 building - positioned at actual coordinates
+  // RH1 building - positioned at actual coordinates using BIS conversion
   const rh1 = {
-    x0: 0, x1: 112, y0: 10, y1: 60,  // Position: x=0-112ft, y=10-60ft (50ft length)
+    x0: 0, x1: 112, y0: -40, y1: 10,  // BIS: nw(0,10) + wDist(112) + nDist(50) = y0:10-50=-40, y1:10
     h: 45, col: 'rgba(128,0,0,0.4)', name: 'RH1'  // Maroon rowhouse, 45ft height
   };
   
-  // RH2 building - positioned at actual coordinates  
+  // RH2 building - positioned at actual coordinates using BIS conversion  
   const rh2 = {
-    x0: 0, x1: 180, y0: 10, y1: 60,  // Position: x=0-180ft, y=10-60ft (50ft length)
+    x0: 0, x1: 180, y0: -40, y1: 10,  // BIS: nw(0,10) + wDist(180) + nDist(50) = y0:10-50=-40, y1:10
     h: 45, col: 'rgba(139,90,43,0.5)', name: 'RH2'  // Brown rowhouse, 45ft height
   };
   
