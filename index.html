@@ -82,6 +82,20 @@ canvas#plateStrip{display:block;}
 footer{border-top:1px solid var(--rule);margin-top:1rem;padding-top:0.6rem;font-size:0.65rem;color:var(--muted);font-style:italic;text-align:center;}
 footer strong{font-style:normal;color:var(--sepia);}
 
+/* Row House positioning fixes */
+#rowhouse1, #rowhouse2 {
+  position: absolute !important;
+  transform: none !important;
+}
+
+#rowhouse1 {
+  left: 32% !important; /* Adjust this percentage to line up with Row House 1's blueprint path */
+}
+
+#rowhouse2 {
+  left: 48% !important; /* Adjust this percentage to line up with Row House 2's blueprint path */
+}
+
 </style>
 </head>
 <body>
@@ -2389,6 +2403,47 @@ function loadSelectedMap() {
 
 // Expose loadSelectedMap to global scope for inline onclick handlers
 window.loadSelectedMap = loadSelectedMap;
+
+// Add loadSelectedMap function for sidebar thumbnail onclick attributes
+window.loadSelectedMap = function(src) {
+  const mapImg = document.getElementById('map-img');
+  if (!mapImg) return;
+  
+  mapImg.src = src;
+  
+  const mapList = [
+    '1839ChurchofMessiahSmithsonian.jpg',
+    '1852MapNew YorkHarrison.jpg',
+    '1854 Perris Map Extract.jpg',
+    '1870 NYU Collection.jpg',
+    '1879 Washington Square Park Bromley.jpg',
+    '1890 NYU Archive.jpg',
+    '1891 Bromley Map.jpg',
+    '1891 NYU Collection.jpg',
+    '1893 Lionel Pincus and Princess Firyal Map Division.jpg',
+    'Austen 1894.jpg',
+    'Kings Handbook NYU.jpg',
+    'NYCZoning2026.jpg'
+  ];
+  
+  const newIndex = mapList.indexOf(src);
+  if (newIndex !== -1) {
+    currentMapIndex = newIndex;
+    console.log('Updated currentMapIndex to:', currentMapIndex);
+  }
+
+  if (typeof loadMapSettings === 'function') {
+    loadMapSettings();
+  }
+  
+  document.querySelectorAll('.thumb-card').forEach(card => {
+    if (card.getAttribute('onclick') && card.getAttribute('onclick').includes(src)) {
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  });
+};
 
 // Function to update the map selector dropdown
 function updateMapSelector() {
