@@ -2406,33 +2406,44 @@ window.loadSelectedMap = loadSelectedMap;
 
 // Add loadSelectedMap function for sidebar thumbnail onclick attributes
 window.loadSelectedMap = function(src) {
-  const mapImg = document.getElementById('map-img');
-  if (!mapImg) return;
+  // Find index by searching MAP_CONFIGS for matching filename
+  let mapIndex = -1;
+  for (let i = 0; i < Object.keys(MAP_CONFIGS).length; i++) {
+    if (MAP_CONFIGS[i].filename === src) {
+      mapIndex = i;
+      break;
+    }
+  }
   
-  mapImg.src = src;
-  
-  // Find the index of this map in our array to update state globally
-  const mapIndex = MAP_LAYERS.findIndex(layer => layer.src === src);
   if (mapIndex !== -1) {
     currentMapIndex = mapIndex;
-    const mapSelect = document.getElementById('map-select');
-    if (mapSelect) mapSelect.value = mapIndex;
     console.log('Updated currentMapIndex to:', currentMapIndex);
-  }
-
-  // Trigger settings loader for the newly active map index
-  if (typeof loadMapSettings === 'function') {
-    loadMapSettings();
-  }
-  
-  // Update thumbnail active styles in the sidebar
-  document.querySelectorAll('.thumb-card').forEach(card => {
-    if (card.getAttribute('onclick') && card.getAttribute('onclick').includes(src)) {
-      card.classList.add('active');
-    } else {
-      card.classList.remove('active');
+    
+    // Use existing _mapImg object, not DOM element
+    if (_mapImg) {
+      _mapImg.src = src;
     }
-  });
+    
+    // Trigger settings loader for the newly active map index
+    if (typeof loadMapSettings === 'function') {
+      loadMapSettings();
+    }
+    
+    // Update thumbnails by finding divs with matching onclick
+    document.querySelectorAll('div[onclick*="selectSiteScene"]').forEach((card, index) => {
+      if (index === mapIndex) {
+        card.style.background = 'var(--sepia)';
+        card.style.color = 'var(--paper)';
+        card.style.border = '2px solid var(--rust)';
+      } else {
+        card.style.background = 'var(--paper)';
+        card.style.color = 'var(--ink)';
+        card.style.border = '1px solid var(--sepia)';
+      }
+    });
+  } else {
+    console.error('Map not found in MAP_CONFIGS:', src);
+  }
 };
 
 // Function to update the map selector dropdown
