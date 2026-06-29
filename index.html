@@ -2367,6 +2367,63 @@ function selectSiteScene(index) {
   console.log('Selected map:', MAP_CONFIGS[index].name);
 }
 
+// Function to load the selected map image and settings
+function loadSelectedMap() {
+  console.log('loadSelectedMap called for index:', currentMapIndex);
+  
+  // Get the map configuration
+  const config = MAP_CONFIGS[currentMapIndex];
+  console.log('Loading map config:', config);
+  
+  // Update the map image source
+  if (_mapImg && config) {
+    console.log('Setting map image src to:', config.filename);
+    _mapImg.src = config.filename;
+    
+    // Update the map selector dropdown
+    updateMapSelector();
+    
+    // Load map settings after a short delay to ensure image loads
+    setTimeout(() => {
+      console.log('Loading map settings for map index:', currentMapIndex);
+      loadMapSettings();
+      
+      // Update the site plan map name display
+      const mapNameElement = document.getElementById('site-plan-map-name');
+      if (mapNameElement) {
+        mapNameElement.textContent = config.name;
+        console.log('Updated site plan map name to:', config.name);
+      }
+      
+      // Redraw the scene
+      drawAll();
+    }, 100);
+  } else {
+    console.error('Failed to load map: _mapImg or config not found');
+  }
+}
+
+// Function to update the map selector dropdown
+function updateMapSelector() {
+  const mapSelector = document.getElementById('map-selector');
+  if (mapSelector) {
+    mapSelector.value = currentMapIndex.toString();
+    console.log('Updated map selector to index:', currentMapIndex);
+  }
+}
+
+// Function to get the selected map index from localStorage
+function getSelectedMapIndex() {
+  const savedIndex = localStorage.getItem('plateH_selectedMap');
+  if (savedIndex !== null) {
+    const index = parseInt(savedIndex);
+    if (index >= 0 && index < MAP_CONFIGS.length) {
+      return index;
+    }
+  }
+  return 0; // Default to first map
+}
+
 
 // Test function to manually load map settings
 function testLoadMapSettings() {
