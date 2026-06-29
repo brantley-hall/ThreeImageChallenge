@@ -1858,12 +1858,38 @@ function selectSiteScene(index) {
   // Save selected map to localStorage
   localStorage.setItem('plateH_selectedMap', index.toString());
   
+  // Update active thumbnail styling
+  updateActiveThumbnail(index);
+  
   // Load the selected map
   loadSelectedMap();
   
   // Visual feedback
   console.log('Selected map:', MAP_CONFIGS[index].name);
 }
+
+// Function to update active thumbnail styling
+function updateActiveThumbnail(activeIndex) {
+  // Remove active class from all thumbnails
+  const thumbnails = document.querySelectorAll('[onclick^="selectSiteScene"]');
+  thumbnails.forEach((thumb, index) => {
+    if (index === activeIndex) {
+      // Add active styling
+      thumb.style.background = 'var(--sepia)';
+      thumb.style.color = 'var(--paper)';
+      thumb.style.border = '2px solid var(--rust)';
+    } else {
+      // Remove active styling
+      thumb.style.background = 'var(--paper)';
+      thumb.style.color = 'var(--ink)';
+      thumb.style.border = '1px solid var(--sepia)';
+    }
+  });
+}
+
+// Expose functions to global scope
+window.selectSiteScene = selectSiteScene;
+window.updateActiveThumbnail = updateActiveThumbnail;
 
 function toggleHelp() {
   const display = document.getElementById('help-display');
@@ -2360,6 +2386,9 @@ function loadSelectedMap() {
     console.error('Failed to load map: _mapImg or config not found');
   }
 }
+
+// Expose loadSelectedMap to global scope for inline onclick handlers
+window.loadSelectedMap = loadSelectedMap;
 
 // Function to update the map selector dropdown
 function updateMapSelector() {
