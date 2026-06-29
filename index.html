@@ -155,7 +155,7 @@ footer strong{font-style:normal;color:var(--sepia);}
           <div style="font-family:'Source Code Pro',monospace;font-size:0.7rem;color:var(--ink);white-space:nowrap;">Developer Interface</div>
           <button id="map-controls-toggle" onclick="toggleMapControls()" 
             style="font-family:'Source Code Pro',monospace;font-size:0.7rem;background:var(--paper);color:var(--ink);border:1px solid var(--sepia);border-radius:3px;padding:0.4rem 0.8rem;cursor:pointer;transition:all 0.2s;">
-            MAP
+            SITE SCENE
           </button>
           <button id="bis-display-toggle" onclick="toggleBISDisplay()" 
             style="font-family:'Source Code Pro',monospace;font-size:0.7rem;background:var(--paper);color:var(--ink);border:1px solid var(--sepia);border-radius:3px;padding:0.4rem 0.8rem;cursor:pointer;transition:all 0.2s;">
@@ -4218,13 +4218,13 @@ function toggleMapControls() {
   if (display.style.display === 'none') {
     // Show map controls
     display.style.display = 'block';
-    button.textContent = 'HIDE MAP';
+    button.textContent = 'HIDE SITE SCENE';
     button.style.background = 'var(--sepia)';
     button.style.color = 'var(--paper)';
   } else {
     // Hide map controls
     display.style.display = 'none';
-    button.textContent = 'MAP';
+    button.textContent = 'SITE SCENE';
     button.style.background = 'var(--paper)';
     button.style.color = 'var(--ink)';
   }
