@@ -3115,16 +3115,16 @@ function getUnifiedBuildingCoordinates(){
     h: 0.001, col: 'rgba(216,213,208,0.01)', name: 'ZZZ'
   };
   
-  // RH1 building - hidden at far coordinates to preserve dependencies
+  // RH1 building - positioned at actual coordinates
   const rh1 = {
-    x0: -999999, x1: -999998, y0: -999999, y1: -999998,
-    h: 0.001, col: 'rgba(196,98,64,0.01)', name: 'RH1'  // Almost transparent
+    x0: 0, x1: 112, y0: 10, y1: 60,  // Position: x=0-112ft, y=10-60ft (50ft length)
+    h: 45, col: 'rgba(128,0,0,0.4)', name: 'RH1'  // Maroon rowhouse, 45ft height
   };
   
-  // RH2 building - hidden at far coordinates to preserve dependencies  
+  // RH2 building - positioned at actual coordinates  
   const rh2 = {
-    x0: -999999, x1: -999998, y0: -999999, y1: -999998,
-    h: 0.001, col: 'rgba(210,140,60,0.01)', name: 'RH2'  // Almost transparent
+    x0: 0, x1: 180, y0: 10, y1: 60,  // Position: x=0-180ft, y=10-60ft (50ft length)
+    h: 45, col: 'rgba(139,90,43,0.5)', name: 'RH2'  // Brown rowhouse, 45ft height
   };
   
   // Church building - hidden at far coordinates to preserve dependencies
