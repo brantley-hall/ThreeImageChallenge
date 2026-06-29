@@ -2670,9 +2670,33 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('  NYU South:', originalPositions['NYU South'].y + offset);
       console.log('  NYU Corner:', originalPositions['NYU Corner'].y + offset);
       console.log('(slider value:', position, ')');
-      
-      drawAll();
     }
+    
+    // Ensure Row Houses have correct default positions
+    if (BIS && BIS.updateBuildingPosition) {
+      console.log('Setting Row Houses default positions...');
+      
+      // Force RH1 to correct position: NW(0,10)
+      BIS.updateBuildingPosition('RH1', { x: 0, y: 10 });
+      
+      // Force RH2 to correct position: NW(0,10)
+      BIS.updateBuildingPosition('RH2', { x: 0, y: 10 });
+      
+      console.log('Row Houses positioned at correct defaults: RH1(0,10), RH2(0,10)');
+      
+      // Verify the positions were set correctly
+      const rh1Info = BIS.getBuildingInfo('RH1');
+      const rh2Info = BIS.getBuildingInfo('RH2');
+      
+      if (rh1Info) {
+        console.log('RH1 verification - NW:', rh1Info.nwCoordinate, 'Position:', rh1Info.position);
+      }
+      if (rh2Info) {
+        console.log('RH2 verification - NW:', rh2Info.nwCoordinate, 'Position:', rh2Info.position);
+      }
+    }
+    
+    drawAll();
   }, 500); // Wait for BIS to initialize
 });
 
@@ -4171,6 +4195,33 @@ try {
   // Load saved defaults after initialization - with delay to ensure BIS is ready
   setTimeout(() => {
     console.log('Attempting to load BIS defaults...');
+    
+    // Check if there are problematic saved defaults and clear them if needed
+    const savedDefaults = localStorage.getItem('bisDefaults');
+    if (savedDefaults) {
+      try {
+        const defaults = JSON.parse(savedDefaults);
+        console.log('Found saved defaults:', defaults);
+        
+        // Check if Row Houses have incorrect positions and fix them
+        if (defaults['RH1'] && defaults['RH1'].nwCoordinate && defaults['RH1'].nwCoordinate.y !== 10) {
+          console.log('Fixing RH1 position in saved defaults');
+          defaults['RH1'].nwCoordinate.y = 10;
+        }
+        if (defaults['RH2'] && defaults['RH2'].nwCoordinate && defaults['RH2'].nwCoordinate.y !== 10) {
+          console.log('Fixing RH2 position in saved defaults');
+          defaults['RH2'].nwCoordinate.y = 10;
+        }
+        
+        // Save corrected defaults back to localStorage
+        localStorage.setItem('bisDefaults', JSON.stringify(defaults));
+      } catch (error) {
+        console.error('Error checking saved defaults:', error);
+        // Clear corrupted defaults
+        localStorage.removeItem('bisDefaults');
+      }
+    }
+    
     loadBISDefaults();
   }, 100);
 } catch (error) {
