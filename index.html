@@ -127,7 +127,7 @@ footer strong{font-style:normal;color:var(--sepia);}
           <div style="display:flex;align-items:center;gap:0.5rem;">
             <button id="site-scene-toggle" onclick="toggleSiteScene()" 
               style="font-family:'Source Code Pro',monospace;font-size:0.7rem;background:var(--paper);color:var(--ink);border:1px solid var(--sepia);border-radius:3px;padding:0.4rem 0.8rem;cursor:pointer;transition:all 0.2s;">
-              SITE SCENE
+              MAP SELECTION
             </button>
             <button id="tape-measure-toggle" onclick="toggleTapeMeasureMode()" 
               style="font-family:'Source Code Pro',monospace;font-size:0.7rem;background:var(--paper);color:var(--ink);border:1px solid var(--sepia);border-radius:3px;padding:0.4rem 0.8rem;cursor:pointer;transition:all 0.2s;">
@@ -251,9 +251,9 @@ footer strong{font-style:normal;color:var(--sepia);}
       
           </div>
     
-    <!-- Site Scene Selector Display -->
+    <!-- Map Selection Display -->
     <div id="site-scene-selector-display" style="display:none;background:var(--aged-dark);border:1px solid var(--rule);border-radius:3px;padding:0.3rem 0.5rem;margin-top:0.3rem;">
-      <div style="font-family:'Source Code Pro',monospace;font-size:0.6rem;color:var(--muted);margin-bottom:0.2rem;">Select Site Scene Map</div>
+      <div style="font-family:'Source Code Pro',monospace;font-size:0.6rem;color:var(--muted);margin-bottom:0.2rem;">Select Map</div>
       
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;">
         <!-- 1852 Harrison Thumbnail -->
@@ -4211,6 +4211,25 @@ setTimeout(() => {
 }, 1000);
 
 // BIS Display Functions for UI
+function toggleSiteScene() {
+  const display = document.getElementById('site-scene-selector-display');
+  const button = document.getElementById('site-scene-toggle');
+  
+  if (display.style.display === 'none') {
+    // Show site scene selector
+    display.style.display = 'block';
+    button.textContent = 'HIDE MAP SELECTION';
+    button.style.background = 'var(--sepia)';
+    button.style.color = 'var(--paper)';
+  } else {
+    // Hide site scene selector
+    display.style.display = 'none';
+    button.textContent = 'MAP SELECTION';
+    button.style.background = 'var(--paper)';
+    button.style.color = 'var(--ink)';
+  }
+}
+
 function toggleMapControls() {
   const display = document.getElementById('map-controls');
   const button = document.getElementById('map-controls-toggle');
