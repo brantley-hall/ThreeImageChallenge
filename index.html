@@ -1848,63 +1848,21 @@ function toggleSiteScene() {
   }
 }
 
-function selectSiteScene(mapIndex) {
-  // Set the selected map index
-  currentMapIndex = mapIndex;
+// Function to handle site scene selection from thumbnails
+function selectSiteScene(index) {
+  console.log('selectSiteScene called with index:', index);
   
-  // Save the selection to localStorage
-  localStorage.setItem('plateH_selectedMap', mapIndex.toString());
+  // Update current map index
+  currentMapIndex = index;
   
-  // Load the selected map directly without calling getSelectedMapIndex
-  const config = MAP_CONFIGS[currentMapIndex];
+  // Save selected map to localStorage
+  localStorage.setItem('plateH_selectedMap', index.toString());
   
-  console.log('DEBUG: selectSiteScene called');
-  console.log('DEBUG: currentMapIndex:', currentMapIndex);
-  console.log('DEBUG: config:', config);
-  console.log('Loading map:', config.name);
-  console.log('File:', config.filename);
+  // Load the selected map
+  loadSelectedMap();
   
-  mapLoadAttempted = false;
-  
-  // Store existing onload handler if it exists
-  const originalOnload = _mapImg.onload;
-  
-  // Set new onload handler that loads settings and calls original handler
-  _mapImg.onload = function() {
-    console.log('Map loaded, now loading saved settings for:', config.name);
-    loadMapSettings();
-    updateMapPosition(); // Apply the loaded settings
-    
-    // Call original onload handler if it existed
-    if (originalOnload) {
-      originalOnload.call(this);
-    }
-  };
-  
-  _mapImg.src = config.filename;
-  
-  // Update the map selector dropdown
-  updateMapSelector();
-  
-  // Update the site plan callout
-  const sitePlanMapNameSpan = document.getElementById('site-plan-map-name');
-  if (sitePlanMapNameSpan && MAP_CONFIGS[currentMapIndex]) {
-    sitePlanMapNameSpan.textContent = MAP_CONFIGS[currentMapIndex].name;
-  }
-  
-  // Hide the popup after selection and reset button text
-  const display = document.getElementById('site-scene-selector-display');
-  const button = document.getElementById('site-scene-toggle');
-  if (display) {
-    display.style.display = 'none';
-  }
-  if (button) {
-    button.textContent = 'SITE SCENE';
-    button.style.background = 'var(--paper)';
-    button.style.color = 'var(--ink)';
-  }
-  
-  console.log('Selected site scene map:', MAP_CONFIGS[mapIndex].name);
+  // Visual feedback
+  console.log('Selected map:', MAP_CONFIGS[index].name);
 }
 
 function toggleHelp() {
