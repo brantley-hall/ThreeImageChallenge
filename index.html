@@ -2350,6 +2350,23 @@ loadSelectedMap();
 // Initialize plate canvas size
 updatePlateCanvasSize();
 
+// Function to handle site scene selection from thumbnails
+function selectSiteScene(index) {
+  console.log('selectSiteScene called with index:', index);
+  
+  // Update current map index
+  currentMapIndex = index;
+  
+  // Save selected map to localStorage
+  localStorage.setItem('plateH_selectedMap', index.toString());
+  
+  // Load the selected map
+  loadSelectedMap();
+  
+  // Visual feedback
+  console.log('Selected map:', MAP_CONFIGS[index].name);
+}
+
 
 // Test function to manually load map settings
 function testLoadMapSettings() {
