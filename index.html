@@ -4211,6 +4211,25 @@ setTimeout(() => {
 }, 1000);
 
 // BIS Display Functions for UI
+function toggleMapControls() {
+  const display = document.getElementById('map-controls');
+  const button = document.getElementById('map-controls-toggle');
+  
+  if (display.style.display === 'none') {
+    // Show map controls
+    display.style.display = 'block';
+    button.textContent = 'HIDE MAP';
+    button.style.background = 'var(--sepia)';
+    button.style.color = 'var(--paper)';
+  } else {
+    // Hide map controls
+    display.style.display = 'none';
+    button.textContent = 'MAP';
+    button.style.background = 'var(--paper)';
+    button.style.color = 'var(--ink)';
+  }
+}
+
 function toggleBISDisplay() {
   const display = document.getElementById('bis-display');
   const button = document.getElementById('bis-display-toggle');
