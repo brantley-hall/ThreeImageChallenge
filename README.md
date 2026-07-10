@@ -1,6 +1,6 @@
 # ThreeImageChallenge
 
-**Version 8** - NYU from Washington Square Park Forensic Image Analysis
+**July2026Version1** - NYU from Washington Square Park Forensic Image Analysis
 
 ## Overview
 
@@ -30,7 +30,7 @@ This is a forensic image analysis tool for examining historical photographs of N
 
 ## Technical Details
 
-- **Version**: 8.0
+- **Version**: July2026Version1
 - **Framework**: Pure HTML5, CSS3, and JavaScript
 - **Rendering**: HTML5 Canvas
 - **Data**: LocalStorage for settings persistence
@@ -52,11 +52,12 @@ This is a forensic image analysis tool for examining historical photographs of N
 
 ## Development Notes
 
-This version includes:
+This version (July2026Version1) includes:
 - Updated image references with spaces removed for compatibility
 - Streamlined interface with Named Solutions section removed
 - Enhanced camera and building control systems
 - Improved map loading and settings management
+- Based on Version 8 backup with July 2026 updates
 
 ## License
 
