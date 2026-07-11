@@ -4996,6 +4996,15 @@ function listSolutions() {
 // Initialize solutions on page load
 document.addEventListener('DOMContentLoaded', function() {
   loadSolutionsData();
+  
+  // Initialize row house positions to prevent overlapping
+  if (typeof BIS !== 'undefined' && BIS.updateBuildingPosition) {
+    // Position RH1 at 32% horizontally
+    BIS.updateBuildingPosition('RH1', { x: 32, y: 10 });
+    // Position RH2 at 48% horizontally  
+    BIS.updateBuildingPosition('RH2', { x: 48, y: 10 });
+    console.log('Initialized row house positions: RH1 at x:32, RH2 at x:48');
+  }
 });
 
 </script>
