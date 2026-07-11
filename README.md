@@ -63,6 +63,7 @@ This version (July2026Version1) includes:
 ## License
 
 Educational and research use. Historical images are used for academic analysis purposes.
-=======
-Version 8 of Line of Site Tool 
->>>>>>> a5bb7150b8661b06447774b0d54f51e8aee679dd
+
+---
+
+**Last Updated**: July 11, 2026 - GitHub Pages deployment forced

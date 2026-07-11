@@ -4169,6 +4169,19 @@ try {
     }
   }, 100);
   
+  // Initialize row house positions after BIS is created
+  setTimeout(() => {
+    if (BIS && BIS.updateBuildingPosition) {
+      // Position RH1 at exact coordinates
+      BIS.updateBuildingPosition('RH1', { x: 0, y: 10 });
+      // Position RH2 at exact coordinates  
+      BIS.updateBuildingPosition('RH2', { x: 0, y: 10 });
+      console.log('Row house positions updated after BIS initialization: RH1 at x:0, RH2 at x:0');
+    } else {
+      console.log('BIS not ready for row house positioning');
+    }
+  }, 150);
+  
   // Load saved defaults after initialization - with delay to ensure BIS is ready
   setTimeout(() => {
     console.log('Attempting to load BIS defaults...');
@@ -4996,15 +5009,6 @@ function listSolutions() {
 // Initialize solutions on page load
 document.addEventListener('DOMContentLoaded', function() {
   loadSolutionsData();
-  
-  // Initialize row house positions to prevent overlapping
-  if (typeof BIS !== 'undefined' && BIS.updateBuildingPosition) {
-    // Position RH1 at exact coordinates
-    BIS.updateBuildingPosition('RH1', { x: 0, y: 10 });
-    // Position RH2 at exact coordinates  
-    BIS.updateBuildingPosition('RH2', { x: 0, y: 10 });
-    console.log('Initialized row house positions: RH1 at x:0, RH2 at x:0 - using exact coordinates');
-  }
 });
 
 </script>
