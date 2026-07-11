@@ -3222,7 +3222,7 @@ class BuildingCoordinates {
     });
     
     this.buildings.set('RH1', {
-      nw: { x: 32, y: 10 },     // NW corner coordinates - positioned at 32% horizontally
+      nw: { x: 0, y: 10 },     // NW corner coordinates - exact position as specified
       wDist: 112,               // West-to-East distance
       nDist: 50,                // North-to-South distance
       ht: 45,                   // Height
@@ -3238,7 +3238,7 @@ class BuildingCoordinates {
     });
     
     this.buildings.set('RH2', {
-      nw: { x: 48, y: 10 },     // NW corner coordinates - positioned at 48% horizontally
+      nw: { x: 0, y: 10 },     // NW corner coordinates - exact position as specified
       wDist: 180,               // West-to-East distance
       nDist: 50,                // North-to-South distance
       ht: 45,                   // Height
@@ -4999,11 +4999,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize row house positions to prevent overlapping
   if (typeof BIS !== 'undefined' && BIS.updateBuildingPosition) {
-    // Position RH1 at 32% horizontally
-    BIS.updateBuildingPosition('RH1', { x: 32, y: 10 });
-    // Position RH2 at 48% horizontally  
-    BIS.updateBuildingPosition('RH2', { x: 48, y: 10 });
-    console.log('Initialized row house positions: RH1 at x:32, RH2 at x:48');
+    // Position RH1 at exact coordinates
+    BIS.updateBuildingPosition('RH1', { x: 0, y: 10 });
+    // Position RH2 at exact coordinates  
+    BIS.updateBuildingPosition('RH2', { x: 0, y: 10 });
+    console.log('Initialized row house positions: RH1 at x:0, RH2 at x:0 - using exact coordinates');
   }
 });
 
