@@ -4182,24 +4182,11 @@ try {
     }
   }, 100);
   
-  // Initialize row house positions after BIS is created
-  setTimeout(() => {
-    if (BIS && BIS.updateBuildingPosition) {
-      // Position RH1 at exact coordinates
-      BIS.updateBuildingPosition('RH1', { x: 0, y: 10 });
-      // Position RH2 at exact coordinates  
-      BIS.updateBuildingPosition('RH2', { x: 0, y: 10 });
-      console.log('Row house positions updated after BIS initialization: RH1 at x:0, RH2 at x:0');
-    } else {
-      console.log('BIS not ready for row house positioning');
-    }
-  }, 150);
+  // Row house positions are now set in BIS defaults - no need to override here
   
-  // Load saved defaults after initialization - with delay to ensure BIS is ready
-  setTimeout(() => {
-    console.log('Attempting to load BIS defaults...');
-    loadBISDefaults();
-  }, 100);
+  // Clear old saved defaults and use new BIS defaults instead
+  console.log('Clearing old saved defaults and using new BIS defaults');
+  localStorage.removeItem('bisDefaults');
 } catch (error) {
   console.error('BIS Debug: Initialization failed:', error);
   BIS = null;
