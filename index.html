@@ -3153,7 +3153,7 @@ class BuildingCoordinates {
   initializeDefaults() {
     // NYU Three-Cube Structure: Main 75x180 + two 25x50 side cubes forming C-shape with open end pointing east
     this.buildings.set('NYU Main', {
-      nw: { x: 0, y: -10 },     // NW corner coordinates (user specified)
+      nw: { x: 0, y: -8 },     // NW corner coordinates (user specified)
       wDist: 75,                // West-to-East distance (width) - main cube
       nDist: 180,               // North-to-South distance (length) - main cube
       ht: 85,                   // Height
@@ -3164,13 +3164,13 @@ class BuildingCoordinates {
         w: null,
         e: null,
         n: null,
-        s: 'rgba(98,98,98,0.6)',  // South face - darker gray shade
+        s: null,
         t: null
       }
     });
     
     this.buildings.set('NYU North', {
-      nw: { x: 75, y: -10 },    // NW corner coordinates (user specified)
+      nw: { x: 75, y: -8 },    // NW corner coordinates (user specified)
       wDist: 25,                // West-to-East distance (width) - side cube
       nDist: 50,                // North-to-South distance (length) - side cube
       ht: 85,                   // Height
@@ -3180,14 +3180,14 @@ class BuildingCoordinates {
       faceColors: {
         w: null,
         e: null,
-        n: 'rgba(70,70,70,0.6)',  // North face - darker shade
+        n: null,
         s: null,
         t: null
       }
     });
     
     this.buildings.set('NYU South', {
-      nw: { x: 75, y: -140 },   // NW corner coordinates (user specified)
+      nw: { x: 75, y: -138 },   // NW corner coordinates (user specified)
       wDist: 25,                // West-to-East distance (width) - side cube
       nDist: 50,                // North-to-South distance (length) - side cube
       ht: 85,                   // Height
@@ -3205,7 +3205,7 @@ class BuildingCoordinates {
     
     // NYU Corner building - 0.25x0.25 black block at upper left corner
     this.buildings.set('NYU Corner', {
-      nw: { x: -1, y: -10 },    // Position at NYU upper left corner (user specified)
+      nw: { x: -1, y: -20 },    // Position at NYU upper left corner (user specified)
       wDist: 0.25,              // 0.25ft width
       nDist: 0.25,              // 0.25ft length
       ht: 85,                   // Same height as NYU
@@ -3222,14 +3222,15 @@ class BuildingCoordinates {
     });
     
     this.buildings.set('RH1', {
-      nw: { x: 0, y: 10 },     // NW corner coordinates - exact position as specified
-      wDist: 112,               // West-to-East distance
+      nw: { x: 100, y: -15 },     // NW corner coordinates - exact position as specified
+      wDist: 100,               // West-to-East distance
       nDist: 50,                // North-to-South distance
       ht: 45,                   // Height
       color: 'rgba(128,0,0,0.4)',  // Maroon rowhouse color
       type: 'building',
+      source: 'user',
       faceColors: {
-        w: 'rgba(98,0,0,0.4)',  // West face - darker maroon shade
+        w: null,
         e: null,
         n: null,
         s: null,
@@ -3238,15 +3239,16 @@ class BuildingCoordinates {
     });
     
     this.buildings.set('RH2', {
-      nw: { x: 0, y: 10 },     // NW corner coordinates - exact position as specified
-      wDist: 180,               // West-to-East distance
+      nw: { x: 247, y: -14 },     // NW corner coordinates - exact position as specified
+      wDist: 210,               // West-to-East distance
       nDist: 50,                // North-to-South distance
       ht: 45,                   // Height
       color: 'rgba(139,90,43,0.5)',  // Brown earth tone rowhouse color
       type: 'building',
+      source: 'user',
       faceColors: {
         w: null,
-        e: 'rgba(109,60,13,0.5)',  // East face - darker brown shade
+        e: null,
         n: null,
         s: null,
         t: null
@@ -3255,46 +3257,49 @@ class BuildingCoordinates {
     
     // Three separate church buildings with different heights and colors
     this.buildings.set('Church North', {
-      nw: { x: churchDistance, y: 0 },   // NW corner coordinates (dynamic from slider)
-      wDist: 92,                // West-to-East distance (reduced by 8 ft for wider Mercer Street)
-      nDist: 25,                // North-to-South distance (1/3 of original)
+      nw: { x: 777, y: 0 },   // NW corner coordinates (user specified)
+      wDist: 100,                // West-to-East distance
+      nDist: 25,                // North-to-South distance
       ht: 50,                   // Height
       color: 'rgba(0,128,0,0.5)',  // Green - 50% opaque
       type: 'building',
+      source: 'user',
       faceColors: {
         w: null,
         e: null,
-        n: 'rgba(0,102,0,0.5)',  // North face - darker shade, 50% opaque
+        n: null,
         s: null,
         t: null
       }
     });
     
     this.buildings.set('Church Middle', {
-      nw: { x: churchDistance, y: -25 },    // NW corner coordinates (dynamic from slider)
-      wDist: 92,                // West-to-East distance (reduced by 8 ft for wider Mercer Street)
-      nDist: 25,                // North-to-South distance (1/3 of original)
+      nw: { x: 777, y: -25 },    // NW corner coordinates (user specified)
+      wDist: 100,                // West-to-East distance
+      nDist: 25,                // North-to-South distance
       ht: 90,                   // Height
       color: 'rgba(255,255,0,0.5)',  // Yellow - 50% opaque
       type: 'building',
+      source: 'user',
       faceColors: {
         w: null,
         e: null,
         n: null,
-        s: 'rgba(204,204,0,0.5)',  // South face - darker shade, 50% opaque
+        s: null,
         t: null
       }
     });
     
     this.buildings.set('Church South', {
-      nw: { x: churchDistance, y: -50 },  // NW corner coordinates (dynamic from slider)
-      wDist: 92,                // West-to-East distance (reduced by 8 ft for wider Mercer Street)
-      nDist: 25,                // North-to-South distance (1/3 of original)
+      nw: { x: 777, y: -50 },  // NW corner coordinates (user specified)
+      wDist: 100,                // West-to-East distance
+      nDist: 25,                // North-to-South distance
       ht: 50,                   // Height
       color: 'rgba(0,0,255,0.5)',  // Blue - 50% opaque
       type: 'building',
+      source: 'user',
       faceColors: {
-        w: 'rgba(0,0,204,0.5)',  // West face - darker shade, 50% opaque
+        w: null,
         e: null,
         n: null,
         s: null,
@@ -3304,75 +3309,83 @@ class BuildingCoordinates {
     
     // Streets using NW, WDist, NDist, Ht system
     this.buildings.set('Washington Square East', {
-      nw: { x: -50, y: 30 },    // NW corner coordinates
+      nw: { x: -50, y: 30 },    // NW corner coordinates (user specified)
       wDist: 50,                // West-to-East distance (width)
       nDist: 330,               // North-to-South distance (length)
       ht: 2,                    // Height (road height)
       color: 'rgba(205,133,63,0.8)',  // Clay-colored roadways
-      type: 'street'
+      type: 'road',
+      source: 'user'
     });
     
     this.buildings.set('University Place', {
-      nw: { x: -50, y: 300 },   // NW corner coordinates
+      nw: { x: -50, y: 300 },   // NW corner coordinates (user specified)
       wDist: 75,                // West-to-East distance (width)
       nDist: 300,               // North-to-South distance (length)
       ht: 2,                    // Height (road height)
       color: 'rgba(205,133,63,0.8)',  // Clay-colored roadways
-      type: 'street'
+      type: 'road',
+      source: 'user'
     });
     
     this.buildings.set('Waverly Place', {
-      nw: { x: 0, y: 60 },      // NW corner coordinates
+      nw: { x: 0, y: 60 },      // NW corner coordinates (user specified)
       wDist: 702,               // West-to-East distance (width)
       nDist: 60,                // North-to-South distance (length)
       ht: 2,                    // Height (road height)
       color: 'rgba(205,133,63,0.8)',  // Clay-colored roadways
-      type: 'street'
+      type: 'road',
+      source: 'user'
     });
     
     this.buildings.set('Broadway', {
-      nw: { x: 702, y: 300 },   // NW corner coordinates
-      wDist: 75,                // West-to-East distance (width) - updated to 75ft
+      nw: { x: 702, y: 300 },   // NW corner coordinates (user specified)
+      wDist: 75,                // West-to-East distance (width)
       nDist: 600,               // North-to-South distance (length)
       ht: 2,                    // Height (road height)
       color: 'rgba(205,133,63,0.8)',  // Clay-colored roadways
-      type: 'street'
+      type: 'road',
+      source: 'user'
     });
     
     this.buildings.set('Washington Square North', {
-      nw: { x: -300, y: 60 },   // NW corner coordinates
+      nw: { x: -300, y: 60 },   // NW corner coordinates (user specified)
       wDist: 300,               // West-to-East distance (width)
       nDist: 60,                // North-to-South distance (length)
       ht: 2,                    // Height (road height)
       color: 'rgba(205,133,63,0.8)',  // Clay-colored roadways
-      type: 'street'
+      type: 'road',
+      source: 'user'
     });
     
     this.buildings.set('Greene Street', {
-      nw: { x: 208, y: 300 },   // NW corner coordinates
-      wDist: 40,                // West-to-East distance (width)
+      nw: { x: 210, y: 300 },   // NW corner coordinates (user specified)
+      wDist: 50,                // West-to-East distance (width)
       nDist: 600,               // North-to-South distance (length)
       ht: 2,                    // Height (road height)
       color: 'rgba(205,133,63,0.8)',  // Clay-colored roadways
-      type: 'street'
+      type: 'road',
+      source: 'user'
     });
     
     this.buildings.set('Mercer Street', {
-      nw: { x: 458, y: 300 },   // NW corner coordinates
-      wDist: 48,                // West-to-East distance (width)
+      nw: { x: 458, y: 300 },   // NW corner coordinates (user specified)
+      wDist: 50,                // West-to-East distance (width)
       nDist: 600,               // North-to-South distance (length)
       ht: 2,                    // Height (road height)
       color: 'rgba(205,133,63,0.8)',  // Clay-colored roadways
-      type: 'street'
+      type: 'road',
+      source: 'user'
     });
     
     this.buildings.set('Washington Place', {
-      nw: { x: 0, y: -197 },    // NW corner coordinates
+      nw: { x: 0, y: -197 },    // NW corner coordinates (user specified)
       wDist: 702,               // West-to-East distance (width)
       nDist: 70,                // North-to-South distance (length)
       ht: 2,                    // Height (road height)
       color: 'rgba(205,133,63,0.8)',  // Clay-colored roadways
-      type: 'street'
+      type: 'road',
+      source: 'user'
     });
   }
   
